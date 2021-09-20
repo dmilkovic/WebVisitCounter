@@ -1,38 +1,27 @@
 import java.util.TreeMap;
 
 public class DataCollector {
+    private String inputData;
+    TreeMap<String, Webpage> hm = new TreeMap<String, Webpage>();
+
     public DataCollector(String inputData) {
         this.inputData = inputData;
     }
 
-    private String inputData;
-    TreeMap<String, Webpage> hm = new TreeMap<String, Webpage>();
-
     public void parseData() {
-        String lines[] = inputData.split("\\r?\\n");
-        for (String string : lines) {
-            String s[] = string.split("\\s+");
-            if (s.length == 2) {
-                String websiteName = "";
-                String userAddress = "";
-                String s1 = s[0];
-                String s2 = s[1];
-                if (s2.matches("(?:[0-9]{1,3}\\.){3}[0-9]{1,3}")) {
-                    userAddress = s2;
-                }
-                websiteName = s1;
-                if (!websiteName.isEmpty() && !userAddress.isEmpty()) {
-                    if (hm.containsKey(websiteName)) {
-                        hm.get(websiteName).addVisitor(userAddress);
-
-                    } else {
-                        hm.put(websiteName, new Webpage(websiteName, userAddress));
-                    }
+        InputParser inputParser = new InputParser(inputData);
+        for (String s : inputParser.breakOnNewLine()) {
+            String webSiteAndAddress[] =  inputParser.getWebsiteAndAddress(s);
+            String website = webSiteAndAddress[0];
+            String userAddress = webSiteAndAddress[1];
+            if (!website.isEmpty() && !userAddress.isEmpty()) {
+                if (hm.containsKey(website)) {
+                    hm.get(website).addVisitor(userAddress);
                 } else {
-                    System.out.println("ERROR: Invalid data");
+                    hm.put(website, new Webpage(website, userAddress));
                 }
             } else {
-                System.out.println("ERROR: Invalid data format");
+                System.out.println("ERROR: Invalid data");
             }
         }
     }
