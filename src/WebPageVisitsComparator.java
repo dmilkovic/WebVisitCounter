@@ -7,7 +7,7 @@ public class WebPageVisitsComparator implements Comparator<Webpage>  {
         // roll number
         public int compare(Webpage a, Webpage b)
         {
-            return a.count - b.count;
+            return  b.count - a.count;
         }
     
 }

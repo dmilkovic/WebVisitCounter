@@ -7,7 +7,7 @@ public class WebPageUniqueComparator implements Comparator<Webpage>  {
         // roll number
         public int compare(Webpage a, Webpage b)
         {
-            return a.getVisitorsSize() - b.getVisitorsSize();
+            return b.getVisitorsSize() - a.getVisitorsSize();
         }
     
 }
