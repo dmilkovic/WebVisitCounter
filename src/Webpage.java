@@ -44,8 +44,8 @@ public class Webpage {
     }
 
     public void countUsers() {
-        System.out.println("Number of visitors" + visitors.size());
-        System.out.println("Total visits " + this.count);
+        System.out.println("Number of visitors: " + visitors.size());
+        System.out.println("Total visits: " + this.count);
     }
 
 }

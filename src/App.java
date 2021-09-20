@@ -1,9 +1,7 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        FileOpener a = new FileOpener("/home/drazen/CodeParser/webserver.log");
-        DataCollector d = new DataCollector(FileReader.readFromFile(a.f));
-        d.parseData();
-        d.getCount();
+        WebpageVisitCounter visitCounter = new WebpageVisitCounter("/home/drazen/CodeParser/webserver.log");
+        //visitCounter.openFile();
         // if (args.length == 1) {
         // if (args[0].toString().contains("path=")) {
         // FileOpener a = new FileOpener("/home/drazen/CodeParser/webserver.log");

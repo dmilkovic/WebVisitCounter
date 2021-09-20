@@ -10,12 +10,12 @@ public class ViewCounter {
            ar.add(map.get(key));
         }
         Collections.sort(ar, new WebPageVisitsComparator());
-        System.out.println("Sorted ");
+        System.out.println("Sorted: ");
         for (Webpage page : ar) {
             System.out.println(page.name + " " + page.count);
         }
 
-        System.out.println("Unique ");
+        System.out.println("Unique: ");
         Collections.sort(ar, new WebPageUniqueComparator());
                 for (Webpage page : ar) {
             System.out.println(page.name + " " + page.getVisitorsSize());

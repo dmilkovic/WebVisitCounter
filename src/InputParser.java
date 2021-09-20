@@ -26,9 +26,9 @@ public class InputParser {
 
     public String[] getWebsiteAndAddress(String s){
         String[] data = {"", ""};
-        String[] input = this.splitItem(s);
-        data[0] = input[0];    
-        data[1] = input[1];   
+        String[] split = this.splitItem(s);
+        data[0] = split[0];    
+        data[1] = split[1];   
         return data;
     } 
 

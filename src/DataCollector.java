@@ -8,7 +8,7 @@ public class DataCollector {
         this.inputData = inputData;
     }
 
-    public void parseData() {
+    public  TreeMap<String, Webpage> parseData() {
         InputParser inputParser = new InputParser(inputData);
         for (String s : inputParser.breakOnNewLine()) {
             String webSiteAndAddress[] =  inputParser.getWebsiteAndAddress(s);
@@ -23,16 +23,14 @@ public class DataCollector {
             } else {
                 System.out.println("ERROR: Invalid data");
             }
-        }
+        }   
+        this.validateMap();
+        return hm;
     }
 
-    public void getCount() {
-        for (String s : hm.keySet()) {
-            System.out.println(hm.get(s).getName());
-            hm.get(s).writeUsers();
-        }
-        System.out.println("Size: " + hm.size());
-        System.out.println("Total count " + Webpage.totalCount);
-        ViewCounter.getViewCount(hm);
+    public void validateMap(){
+        if(hm.size() == 0) throw new Error("Invalid file format!"); 
     }
+
+
 }
