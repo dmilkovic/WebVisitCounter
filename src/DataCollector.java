@@ -2,13 +2,13 @@ import java.util.TreeMap;
 
 public class DataCollector {
     private String inputData;
-    TreeMap<String, Webpage> hm = new TreeMap<String, Webpage>();
+    TreeMap<String, WebPageInterface> hm = new TreeMap<String, WebPageInterface>();
 
     public DataCollector(String inputData) {
         this.inputData = inputData;
     }
 
-    public  TreeMap<String, Webpage> parseData() {
+    public  TreeMap<String, WebPageInterface> parseData() {
         InputParser inputParser = new InputParser(inputData);
         for (String s : inputParser.breakOnNewLine()) {
             String webSiteAndAddress[] =  inputParser.getWebsiteAndAddress(s);

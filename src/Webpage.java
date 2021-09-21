@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class Webpage {
+public class Webpage implements WebPageInterface{
     public static int totalCount = 0;
     public int count = 0;
     public String name;
@@ -15,6 +15,10 @@ public class Webpage {
         this.name = name;
         this.visitors = new Vector<String>();
         this.addVisitor(userAddress);
+    }
+
+    public String getWebPageName(){
+        return this.name;
     }
 
     public void addVisitor(String address) {
@@ -32,15 +36,19 @@ public class Webpage {
         this.name = name;
     }
 
-    public void writeUsers() {
+    public void printOutUsers() {
         for (String s : visitors) {
             System.out.println("User address: " + s);
         }
         countUsers();
     }
 
-    public int getVisitorsSize() {
+    public int getUniqueCount() {
         return this.visitors.size();
+    }
+
+    public int getTotalCount(){
+        return this.count;
     }
 
     public void countUsers() {

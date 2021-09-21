@@ -1,13 +1,13 @@
 // Java program to demonstrate working of Comparator
 // interface
 import java.util.*;
-public class WebPageUniqueComparator implements Comparator<Webpage>  {
+public class WebPageUniqueComparator implements Comparator<WebPageInterface>  {
 
         // Used for sorting in ascending order of
         // roll number
-        public int compare(Webpage a, Webpage b)
+        public int compare(WebPageInterface a, WebPageInterface b)
         {
-            return b.getVisitorsSize() - a.getVisitorsSize();
+            return b.getUniqueCount() - a.getUniqueCount();
         }
     
 }

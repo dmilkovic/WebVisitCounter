@@ -3,7 +3,7 @@ import java.util.TreeMap;
 public class WebpageVisitCounter {
     String filePath;
     FileOpener fileOpener; 
-    TreeMap<String, Webpage> webpagesMap = new TreeMap<String, Webpage>();
+    TreeMap<String, WebPageInterface> webpagesMap = new TreeMap<String, WebPageInterface>();
 
     public WebpageVisitCounter(String filePath) {
         this.filePath = filePath;
@@ -19,8 +19,8 @@ public class WebpageVisitCounter {
 
     public void getCount() {
         for (String s : webpagesMap.keySet()) {
-            System.out.println(webpagesMap.get(s).getName());
-            webpagesMap.get(s).writeUsers();
+            System.out.println(webpagesMap.get(s).getWebPageName());
+            webpagesMap.get(s).printOutUsers();
         }
         System.out.println("Size: " + webpagesMap.size());
         System.out.println("Total count: " + Webpage.totalCount);
