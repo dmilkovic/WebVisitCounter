@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class Webpage implements WebPageInterface{
+public class Webpage implements SortableWebPage {
     public static int totalCount = 0;
     public int count = 0;
     public String name;
@@ -17,15 +17,35 @@ public class Webpage implements WebPageInterface{
         this.addVisitor(userAddress);
     }
 
-    public String getWebPageName(){
+    @Override
+    public String getWebPageName() {
         return this.name;
     }
 
+    @Override
     public void addVisitor(String address) {
         totalCount++;
         count++;
         if (!visitors.contains(address))
             visitors.add(address);
+    }
+
+    @Override
+    public void printOutUsers() {
+        for (String s : visitors) {
+            System.out.println("User address: " + s);
+        }
+        countUsers();
+    }
+
+    @Override
+    public int getUniqueCount() {
+        return this.visitors.size();
+    }
+
+    @Override
+    public int getTotalCount() {
+        return this.count;
     }
 
     public String getName() {
@@ -34,21 +54,6 @@ public class Webpage implements WebPageInterface{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void printOutUsers() {
-        for (String s : visitors) {
-            System.out.println("User address: " + s);
-        }
-        countUsers();
-    }
-
-    public int getUniqueCount() {
-        return this.visitors.size();
-    }
-
-    public int getTotalCount(){
-        return this.count;
     }
 
     public void countUsers() {

@@ -1,4 +1,4 @@
-public abstract interface WebPageInterface {
+public abstract interface SortableWebPage {
     public void addVisitor(String address);
     public void printOutUsers();
     public int getUniqueCount();

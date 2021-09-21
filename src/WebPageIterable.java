@@ -1,6 +1,6 @@
 import java.util.TreeMap;
 
 public interface WebPageIterable {
-    public TreeMap<String, WebPageInterface> parseData();
+    public TreeMap<String, SortableWebPage> parseData();
     public void validateMap();
 }

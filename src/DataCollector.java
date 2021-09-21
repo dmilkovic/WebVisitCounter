@@ -2,16 +2,17 @@ import java.util.TreeMap;
 
 public class DataCollector implements WebPageIterable {
     private String inputData;
-    TreeMap<String, WebPageInterface> hm = new TreeMap<String, WebPageInterface>();
+    private TreeMap<String, SortableWebPage> hm = new TreeMap<String, SortableWebPage>();
 
     public DataCollector(String inputData) {
         this.inputData = inputData;
     }
 
-    public  TreeMap<String, WebPageInterface> parseData() {
+    @Override
+    public TreeMap<String, SortableWebPage> parseData() {
         InputParser inputParser = new InputParser(inputData);
         for (String s : inputParser.breakOnNewLine()) {
-            String webSiteAndAddress[] =  inputParser.getWebsiteAndAddress(s);
+            String webSiteAndAddress[] = inputParser.getWebsiteAndAddress(s);
             String website = webSiteAndAddress[0];
             String userAddress = webSiteAndAddress[1];
             if (!website.isEmpty() && !userAddress.isEmpty()) {
@@ -23,14 +24,15 @@ public class DataCollector implements WebPageIterable {
             } else {
                 System.out.println("ERROR: Invalid data");
             }
-        }   
+        }
         this.validateMap();
         return hm;
     }
 
-    public void validateMap(){
-        if(hm.size() == 0) throw new Error("Invalid file format!"); 
+    @Override
+    public void validateMap() {
+        if (hm.size() == 0)
+            throw new Error("Invalid file format!");
     }
-
 
 }

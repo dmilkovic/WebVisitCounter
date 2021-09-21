@@ -3,32 +3,32 @@ import java.util.Comparator;
 import java.util.TreeMap;
 import java.util.Collections;
 
-public class TotalViewCount implements ViewCounter {
-    private ArrayList<WebPageInterface> values;
+public class TotalViewCount implements WebPageSorter {
+    private ArrayList<SortableWebPage> values;
 
-    public TotalViewCount(TreeMap<String, WebPageInterface> map) {
-        this.values = new ArrayList<WebPageInterface>(map.values());
+    public TotalViewCount(TreeMap<String, SortableWebPage> map) {
+        this.values = new ArrayList<SortableWebPage>(map.values());
     }
 
     @Override
-    public ArrayList<WebPageInterface> getSortedArray() {
+    public ArrayList<SortableWebPage> getSortedArray() {
         return values;
     }
 
     @Override
-    public void setSortedArray(ArrayList<WebPageInterface> array) {
+    public void setSortedArray(ArrayList<SortableWebPage> array) {
         this.values = array;
     }
 
     @Override
-    public void sort(Comparator<WebPageInterface> c) {
+    public void sort(Comparator<SortableWebPage> c) {
         Collections.sort(values, c);
     }
 
     @Override
     public void printValues() {
 
-        for (WebPageInterface page : values) {
+        for (SortableWebPage page : values) {
             System.out.println(page.getWebPageName() + " " + page.getUniqueCount());
         }
     }
