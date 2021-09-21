@@ -1,6 +1,6 @@
 import java.util.TreeMap;
 
-public class DataCollector {
+public class DataCollector implements WebPageIterable {
     private String inputData;
     TreeMap<String, WebPageInterface> hm = new TreeMap<String, WebPageInterface>();
 
